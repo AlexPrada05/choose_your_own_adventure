@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
+from core.config import settings
 
 app = FastAPI(
     title="Choose Your Own Adventrue Game API",
@@ -14,7 +14,7 @@ app = FastAPI(
 # So we´re allowed to enable certain origin. So certain URLs to interact with our backend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=settings.ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"], # Like GET(retrieving data), POST(making date), PUT(updating data)
     allow_headers=["*"], # additional information we can send with the request
